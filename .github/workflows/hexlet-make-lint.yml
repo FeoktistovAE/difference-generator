@@ -2,7 +2,7 @@ name: make-lint
 on: push
 
 jobs:
-  make-setup:
+  hexlet-make-lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
