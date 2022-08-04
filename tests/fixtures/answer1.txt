@@ -1,0 +1,12 @@
+{
+  amount: 6
+  delivery: false
++ fragile: None
+- furniture: sofa
++ furniture: table
+- price: 115004
++ price: 39565
+- serial-number: 2345439-243
++ serial-number: 2345029-242
+- weight: 480
+}
