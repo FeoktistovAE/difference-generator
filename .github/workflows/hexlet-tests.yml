@@ -1,0 +1,25 @@
+name: make-test
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: make-install
+        run: |
+             pip install poetry
+             poetry install
+      - name: make lint
+        run: |
+             make lint
+      - name: make-test
+        run: |
+             make test
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.7.4
+        env:
+          CC_TEST_REPORTER_ID: 050f073d0fd93ceba9410b267fcab93dcf67d2d2f8b2e59fe043187bbd2f3031
+        with:
+          coverageCommand: make test-coverage
+          debug: true

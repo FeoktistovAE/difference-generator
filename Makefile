@@ -13,5 +13,5 @@ diff:
 	poetry run gendiff ../file1.json ../file2.json
 test:
 	poetry run pytest
-test-cov:
+test-coverage:
 	poetry run pytest --cov=gendiff
