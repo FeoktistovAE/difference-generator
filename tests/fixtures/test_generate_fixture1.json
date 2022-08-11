@@ -1,8 +1,6 @@
 {
-    "furniture": "sofa",
-    "amount": 6,
-    "serial-number": "2345439-243",
-    "delivery": false,
-    "price": 115004,
-    "weight": 480
+    "host": "hexlet.io",
+    "timeout": 50,
+    "proxy": "123.234.53.22",
+    "follow": false
 }

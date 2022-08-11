@@ -4,7 +4,7 @@ install:
 build:
 	poetry build
 package-install:
-	python3 -m pip install --user dist/*.whl
+	python3 -m pip install dist/*.whl
 help:
 	poetry run gendiff -h
 lint:
