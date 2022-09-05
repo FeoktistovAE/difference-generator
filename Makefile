@@ -1,4 +1,3 @@
-setup: install build package-install
 install:
 	poetry install
 build:
