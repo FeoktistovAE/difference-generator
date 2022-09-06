@@ -12,7 +12,7 @@ python = "^3.8"
 PyYAML = "^6.0"
 
 [tool.poetry.dev-dependencies]
-flake8 = "^5.0.2"
+flake8 = "^4.0.1"
 pytest-cov = "^3.0.0"
 pytest = "^6.2.3"
 
