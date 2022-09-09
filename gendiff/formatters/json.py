@@ -1,11 +1,10 @@
 import json
 
 
-def get_json(file1, file2, find_diff):
-    internal_view = find_diff(file1, file2)
+def get_json(file1, file2, internal_view):
     joined_keys = file1.keys() | file2.keys()
 
-    def iter_(value, path=''):
+    def iter_(value):
         lines = []
         sorted_keys = sorted(list(value))
         for i in sorted_keys:

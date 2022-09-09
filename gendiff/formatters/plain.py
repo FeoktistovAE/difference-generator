@@ -1,4 +1,4 @@
-def dump(value):
+def convert_to_str(value):
     if isinstance(value, bool):
         return (str(value)).lower()
     elif value is None:
@@ -8,14 +8,13 @@ def dump(value):
     return f"'{value}'"
 
 
-def plain(file1, file2, find_diff):
-    internal_view = find_diff(file1, file2)
+def plain(file1, file2, internal_view):
     joined_keys = file1.keys() | file2.keys()
     lines = []
 
     def iter_(value, path=''):
         if not isinstance(value, set):
-            return dump(value)
+            return convert_to_str(value)
         sorted_keys = sorted(list(value))
         for i in sorted_keys:
             for j in internal_view:
@@ -26,7 +25,8 @@ def plain(file1, file2, find_diff):
                     elif j['action'] == 'updated':
                         lines.append(
                             f"Property '{path}{i}' was updated. "
-                            f"From {dump(j['old_key_value'])} to {dump(j['new_key_value'])}"
+                            f"From {convert_to_str(j['old_key_value'])} to "
+                            f"{convert_to_str(j['new_key_value'])}"
                         )
                     elif j['action'] == 'removed':
                         lines.append(
@@ -34,7 +34,8 @@ def plain(file1, file2, find_diff):
                         )
                     elif j['action'] == 'added':
                         lines.append(
-                            f"Property '{path}{i}' was added with value: {dump(j['key_value'])}"
+                            f"Property '{path}{i}' was added with value: "
+                            f"{convert_to_str(j['key_value'])}"
                         )
         return '\n'.join(lines)
     return iter_(joined_keys)

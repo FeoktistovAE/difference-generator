@@ -1,7 +1,7 @@
 import itertools
 
 
-def dump(value):
+def convert_to_str(value):
     if isinstance(value, bool):
         return (str(value)).lower()
     elif value is None:
@@ -9,10 +9,9 @@ def dump(value):
     return str(value)
 
 
-def stylish(file1, file2, find_diff):
+def stylish(file1, file2, internal_view):
     replacer = '  '
     spaces_count = 1
-    internal_view = find_diff(file1, file2)
     joined_keys = file1.keys() | file2.keys()
 
     def iter_(value, depth):
@@ -26,7 +25,7 @@ def stylish(file1, file2, find_diff):
             result = itertools.chain("{", lines, [deep_indent + "}"])
             return "\n".join(result)
         elif not isinstance(value, set):
-            return dump(value)
+            return convert_to_str(value)
         sorted_keys = sorted(list(value))
         for i in sorted_keys:
             for j in internal_view:

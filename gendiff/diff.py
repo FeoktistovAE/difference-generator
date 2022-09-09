@@ -1,7 +1,5 @@
-from gendiff.logic.file_parse import parse_json, parse_yaml
-from gendiff.formatters.stylish_formatter import stylish
-from gendiff.formatters.plain_formatter import plain
-from gendiff.formatters.json_formatter import get_json
+from gendiff.file_parse import file_parse
+from gendiff.formatters.format import apply_formatter
 
 
 def find_children_and_updates(intersection, node1, node2):
@@ -53,17 +51,7 @@ def find_diff(file1, file2):
 
 
 def generate_diff(path_to_file1, path_to_file2, format='stylish'):
-    if path_to_file1.endswith('.json'):
-        file1 = parse_json(path_to_file1)
-    else:
-        file1 = parse_yaml(path_to_file1)
-    if path_to_file2.endswith('.json'):
-        file2 = parse_json(path_to_file2)
-    else:
-        file2 = parse_yaml(path_to_file2)
-    if format == 'stylish':
-        return stylish(file1, file2, find_diff)
-    elif format == 'plain':
-        return plain(file1, file2, find_diff)
-    else:
-        return get_json(file1, file2, find_diff)
+    file1 = file_parse(path_to_file1)
+    file2 = file_parse(path_to_file2)
+    internal_view = find_diff(file1, file2)
+    return apply_formatter(file1, file2, format, internal_view)
