@@ -1,12 +1,14 @@
-from gendiff.formatters.stylish import stylish
+from gendiff.formatters.stylish import render_stylish
 from gendiff.formatters.plain import plain
 from gendiff.formatters.json import get_json
 
 
-def apply_formatter(file1, file2, format, find_diff):
+def apply_formatter(internal_view, format):
     if format == 'stylish':
-        return stylish(file1, file2, find_diff)
+        return render_stylish(internal_view)
     elif format == 'plain':
-        return plain(file1, file2, find_diff)
+        return plain(internal_view)
     elif format == 'json':
-        return get_json(file1, file2, find_diff)
+        return get_json(internal_view)
+    else:
+        raise Exception('Unknown render format')
