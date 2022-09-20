@@ -6,7 +6,7 @@ def to_str(value):
     elif isinstance(value, dict):
         return '[complex value]'
     elif isinstance(value, int):
-        return str(value) 
+        return str(value)
     return f"'{value}'"
 
 
