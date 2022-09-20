@@ -1,11 +1,13 @@
-def to_str(content):
-    if isinstance(content, bool):
-        return (str(content)).lower()
-    elif content is None:
+def to_str(value):
+    if isinstance(value, bool):
+        return (str(value)).lower()
+    elif value is None:
         return 'null'
-    elif isinstance(content, dict):
+    elif isinstance(value, dict):
         return '[complex value]'
-    return f"'{content}'"
+    elif isinstance(value, int):
+        return str(value) 
+    return f"'{value}'"
 
 
 def plain(content, path='', lines=[]):
