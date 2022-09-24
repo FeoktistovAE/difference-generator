@@ -5,8 +5,9 @@
 [![make-tests](https://github.com/FeoktistovAE/python-project-lvl2/actions/workflows/hexlet-tests.yml/badge.svg)](https://github.com/FeoktistovAE/python-project-lvl2/actions/workflows/hexlet-tests.yml)
 ### Description:
     This package provides CLI utilitte that compares two configuration files and shows a difference.
-    CLI utilitte supports YAML and JSON formatts and also provides visualisation of found differences in three different views:
-    stylish, plain and json. You can select one of them, using the -f flag as demonstrated below.
+    CLI utilitte supports YAML and JSON formatts and also provides visualisation of found differences
+    in three different views: stylish, plain and json. 
+    You can select one of them, using the -f flag as demonstrated below.
     The project was written as a part of the Hexlet training course by student Feoktistov Andrei.
     This project was built using python3.8, poetry and flake8 tools for bash.
 ### Package installation:
