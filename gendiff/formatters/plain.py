@@ -10,13 +10,15 @@ def to_str(value):
     return f"'{value}'"
 
 
-def build_plain(content, path='', lines=[]):
-
+def build_plain(content, path=''):
+    lines = []
     if not isinstance(content, list):
         return to_str(content)
+
     for i in content:
         if i['action'] == 'has_child':
-            build_plain(i['childrens'], f"{path}{i['key']}.")
+            lines.append(
+                build_plain(i['childrens'], f"{path}{i['key']}."))
         elif i['action'] == 'updated':
             lines.append(
                 f"Property '{path}{i['key']}' was updated. "
@@ -32,7 +34,8 @@ def build_plain(content, path='', lines=[]):
                 f"Property '{path}{i['key']}' was added with value: "
                 f"{to_str(i['value'])}"
             )
-    return '\n'.join(lines)
+    result = '\n'.join(lines)
+    return result
 
 
 def render_plain(content):
