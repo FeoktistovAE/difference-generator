@@ -54,4 +54,4 @@ def build_stylish(content, depth=0):
 
 
 def render_stylish(content):
-    return(build_stylish(content))
+    return build_stylish(content)
