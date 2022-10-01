@@ -3,7 +3,6 @@ import pytest
 from tests import FIXTURE_PATH
 
 
-
 def build_path(file_name):
     return FIXTURE_PATH + file_name
 
