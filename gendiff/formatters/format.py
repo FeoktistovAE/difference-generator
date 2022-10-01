@@ -10,5 +10,4 @@ def apply_formatter(internal_view, format):
         return render_plain(internal_view)
     if format == 'json':
         return render_json(internal_view)
-    else:
-        raise Exception('Unknown render format')
+    raise Exception('Unknown render format')

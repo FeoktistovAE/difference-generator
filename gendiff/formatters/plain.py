@@ -1,20 +1,17 @@
 def to_str(value):
     if isinstance(value, bool):
         return (str(value)).lower()
-    elif value is None:
+    if value is None:
         return 'null'
-    elif isinstance(value, dict):
+    if isinstance(value, dict):
         return '[complex value]'
-    elif isinstance(value, int):
+    if isinstance(value, int):
         return str(value)
     return f"'{value}'"
 
 
 def build_plain(content, path=''):
     lines = []
-    if not isinstance(content, list):
-        return to_str(content)
-
     for i in content:
         if i['action'] == 'has_child':
             lines.append(

@@ -1,4 +1,4 @@
-from gendiff.file_parse import get_content
+from gendiff.parser import get_content
 from gendiff.formatters.format import apply_formatter
 
 
