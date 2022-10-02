@@ -10,30 +10,30 @@ def to_str(value):
     return f"'{value}'"
 
 
-def build_plain(node, path=''):
+def build_plain(elements, path=''):
     lines = []
-    for i in node:
-        if i['action'] == 'has_child':
+    for node in elements:
+        if node['action'] == 'has_child':
             lines.append(
-                build_plain(i['childrens'], f"{path}{i['key']}."))
-        elif i['action'] == 'updated':
+                build_plain(node['childrens'], f"{path}{node['key']}."))
+        elif node['action'] == 'updated':
             lines.append(
-                f"Property '{path}{i['key']}' was updated. "
-                f"From {to_str(i['old_value'])} to "
-                f"{to_str(i['new_value'])}"
+                f"Property '{path}{node['key']}' was updated. "
+                f"From {to_str(node['old_value'])} to "
+                f"{to_str(node['new_value'])}"
             )
-        elif i['action'] == 'removed':
+        elif node['action'] == 'removed':
             lines.append(
-                f"Property '{path}{i['key']}' was removed"
+                f"Property '{path}{node['key']}' was removed"
             )
-        elif i['action'] == 'added':
+        elif node['action'] == 'added':
             lines.append(
-                f"Property '{path}{i['key']}' was added with value: "
-                f"{to_str(i['value'])}"
+                f"Property '{path}{node['key']}' was added with value: "
+                f"{to_str(node['value'])}"
             )
     result = '\n'.join(lines)
     return result
 
 
-def render_plain(node):
-    return build_plain(node)
+def render_plain(elements):
+    return build_plain(elements)

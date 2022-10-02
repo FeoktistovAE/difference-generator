@@ -38,5 +38,5 @@ def build_diff(content1, content2):
 def generate_diff(path_to_file1, path_to_file2, format='stylish'):
     content1 = get_content(path_to_file1)
     content2 = get_content(path_to_file2)
-    content_diff = build_diff(content1, content2)
-    return apply_formatter(content_diff, format)
+    dicts_diff = build_diff(content1, content2)
+    return apply_formatter(dicts_diff, format)
