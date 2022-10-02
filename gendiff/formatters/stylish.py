@@ -5,9 +5,8 @@ REPLACER = '  '
 SPACES_COUNT = 1
 
 
-def to_str(value, depth):
-    deep_indent_size = depth + SPACES_COUNT
-    deep_indent = REPLACER * deep_indent_size
+def to_str(value, deep_indent_size):
+    indent = REPLACER * (deep_indent_size + SPACES_COUNT)
     if isinstance(value, bool):
         return (str(value)).lower()
     if value is None:
@@ -15,18 +14,18 @@ def to_str(value, depth):
     if isinstance(value, dict):
         lines = []
         for key, val in value.items():
-            lines.append(f'  {deep_indent}  {key}: {to_str(val, deep_indent_size+1)}')
-        result = itertools.chain("{", lines, [deep_indent + "}"])
+            lines.append(f'  {indent}  {key}: {to_str(val, deep_indent_size + 2)}')
+        result = itertools.chain("{", lines, [indent + "}"])
         return "\n".join(result)
     return str(value)
 
 
-def build_stylish(content, depth=0):
+def build_stylish(node, depth=0):
     deep_indent_size = depth + SPACES_COUNT
     deep_indent = REPLACER * deep_indent_size
     current_indent = REPLACER * depth
     lines = []
-    for i in content:
+    for i in node:
         if i['action'] == 'has_child':
             lines.append(
                 f'{deep_indent}  {i["key"]}: {build_stylish(i["childrens"], deep_indent_size+1)}'
@@ -54,5 +53,5 @@ def build_stylish(content, depth=0):
     return "\n".join(result)
 
 
-def render_stylish(content):
-    return build_stylish(content)
+def render_stylish(node):
+    return build_stylish(node)

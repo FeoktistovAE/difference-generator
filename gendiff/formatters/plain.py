@@ -10,9 +10,9 @@ def to_str(value):
     return f"'{value}'"
 
 
-def build_plain(content, path=''):
+def build_plain(node, path=''):
     lines = []
-    for i in content:
+    for i in node:
         if i['action'] == 'has_child':
             lines.append(
                 build_plain(i['childrens'], f"{path}{i['key']}."))
@@ -35,5 +35,5 @@ def build_plain(content, path=''):
     return result
 
 
-def render_plain(content):
-    return build_plain(content)
+def render_plain(node):
+    return build_plain(node)
