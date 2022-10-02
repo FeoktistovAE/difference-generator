@@ -11,7 +11,21 @@
     The project was written as a part of the Hexlet training course by student Feoktistov Andrei.
     This project was built using python3.8, poetry and flake8 tools for bash.
 ### Package installation:
-    make setup
+```bash
+pip3 install git+https://github.com/FeoktistovAE/python-project-lvl2
+```
+
+```bash
+make setup
+```
+### Utility usage:
+```bash
+gendiff -h
+```
+
+```bash
+usage: gendiff [-h] [-f FORMAT] first_file second_file
+```
 [![asciicast](https://asciinema.org/a/si25r82LfnKhXpD4kuVvApGrE.svg)](https://asciinema.org/a/si25r82LfnKhXpD4kuVvApGrE)
 -geindiff stylish format work example
 [![asciicast](https://asciinema.org/a/G61MjsJjVeweqYGbvMz1MxEYH.svg)](https://asciinema.org/a/G61MjsJjVeweqYGbvMz1MxEYH)
