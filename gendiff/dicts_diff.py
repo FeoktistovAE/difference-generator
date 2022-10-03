@@ -10,27 +10,27 @@ def build_diff(content1, content2):
     intersection = node1_keys & node2_keys
     joined_keys = sorted(list(node1_keys | node2_keys))
     result = []
-    for i in joined_keys:
-        if i in intersection:
-            if isinstance(content1[i], dict) and isinstance(content2[i], dict):
+    for key in joined_keys:
+        if key in intersection:
+            if isinstance(content1[key], dict) and isinstance(content2[key], dict):
                 result.append(
-                    {'action': 'has_child', 'key': i, 'childrens': build_diff(content1[i], content2[i])}
+                    {'action': 'has_child', 'key': key, 'childrens': build_diff(content1[key], content2[key])}
                 )
-            elif content1[i] != content2[i]:
+            elif content1[key] != content2[key]:
                 result.append(
-                    {'action': 'updated', 'key': i, 'old_value': content1[i], 'new_value': content2[i]}
+                    {'action': 'updated', 'key': key, 'old_value': content1[key], 'new_value': content2[key]}
                 )
             else:
                 result.append(
-                    {'action': 'unchanged', 'key': i, 'value': content1[i]}
+                    {'action': 'unchanged', 'key': key, 'value': content1[key]}
                 )
-        elif i in removed:
+        elif key in removed:
             result.append(
-                {'action': 'removed', 'key': i, 'value': content1[i]}
+                {'action': 'removed', 'key': key, 'value': content1[key]}
             )
-        elif i in added:
+        elif key in added:
             result.append(
-                {'action': 'added', 'key': i, 'value': content2[i]}
+                {'action': 'added', 'key': key, 'value': content2[key]}
             )
     return result
 

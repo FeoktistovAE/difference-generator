@@ -55,5 +55,5 @@ def build_stylish(elements, depth=0):
     return "\n".join(result)
 
 
-def render_stylish(elements):
-    return build_stylish(elements)
+def render_stylish(content):
+    return build_stylish(content)

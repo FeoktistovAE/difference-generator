@@ -35,5 +35,5 @@ def build_plain(elements, path=''):
     return result
 
 
-def render_plain(elements):
-    return build_plain(elements)
+def render_plain(content):
+    return build_plain(content)
